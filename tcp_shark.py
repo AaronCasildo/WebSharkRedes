@@ -12,6 +12,8 @@ def menu():
     print('2 - Capturar un número específico de paquetes y guardarlos en un archivo')
     print('3 - Seleccionar una interfaz específica para capturar paquetes')
     print('4 - Capturar paquetes específicos (TCP, UDP, ICMP, etc.)')
+    print('5 - Capturar paquetes y desplegarlos en ascii')
+    print('6 - Capturar paquetes con fecha y hora')
     print('\n00 - Salir')
 
 def main():
@@ -50,6 +52,14 @@ def process4():
     subprocess.run(["tcpdump", "-i", interface, protocol])  # Corrección en el comando
     input('\nPresione Enter para regresar al menú principal...')
 
+def process5():
+    subprocess.run(["tcpdump", "-c 100", "-A"])
+    input('\nPresione Enter para regresar al menú principal...')
+
+def procces6():
+    subprocess.run(["tcpdump", "-c 100", "-tttt"])
+    input('\nPresione Enter para regresar al menú principal...')    
+
 def exit_program():
     print('Saliendo...')
     sys.exit()
@@ -59,6 +69,7 @@ funciones = {
     2: process2,
     3: process3,
     4: process4,
+    5: process5,
     00: exit_program
 }
 
