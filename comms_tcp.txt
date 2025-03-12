@@ -1,130 +1,130 @@
-Aquí tienes cómo realizar cada una de esas acciones en `tcpdump`:
+Acciones en `tcpdump`:
 
 ### 1. Mostrar interfaces de red disponibles
-```sh
-tcpdump -D
-```
+
+    tcpdump -D
+
 
 ### 2. Capturar un número específico de paquetes y guardarlos en un archivo
-```sh
+
 tcpdump -c <número_de_paquetes> -w <archivo.pcap>
-```
+
 Ejemplo para capturar 100 paquetes y guardarlos en `captura.pcap`:
-```sh
+
 tcpdump -c 100 -w captura.pcap
-```
+
 
 ### 3. Seleccionar una interfaz específica para capturar paquetes
-```sh
+
 tcpdump -i <nombre_de_interfaz>
-```
+
 Ejemplo para capturar en `eth0`:
-```sh
+
 tcpdump -i eth0
-```
+
 
 ### 4. Capturar paquetes específicos (TCP, UDP, ICMP, etc.)
-```sh
+
 tcpdump -i <interfaz> <protocolo>
-```
+
 Ejemplo para capturar solo paquetes TCP en `eth0`:
-```sh
+
 tcpdump -i eth0 tcp
-```
+
 Ejemplo para UDP:
-```sh
+
 tcpdump -i eth0 udp
-```
+
 
 ### 5. Mostrar solo paquetes en ASCII
-```sh
+
 tcpdump -A
-```
+
 
 ### 6. Capturar con fecha y hora
-```sh
+
 tcpdump -tttt
-```
+
 
 ### 7. Guardar la captura en un archivo `.pcap` y mostrar el número de paquetes capturados
-```sh
+
 tcpdump -i <interfaz> -w <archivo.pcap>
-```
+
 Para contar los paquetes en el archivo:
-```sh
+
 tcpdump -r <archivo.pcap> | wc -l
-```
+
 
 ### 8. Filtrar por dirección IP o rango de red (mostrando IP y puerto)
 - Filtrar por IP de origen:
-  ```sh
+
   tcpdump -i <interfaz> src host <IP>
-  ```
+
 - Filtrar por IP de destino:
-  ```sh
+
   tcpdump -i <interfaz> dst host <IP>
-  ```
+
 - Filtrar por origen y destino:
-  ```sh
+
   tcpdump -i <interfaz> host <IP>
-  ```
+
 - Filtrar por red:
-  ```sh
+
   tcpdump -i <interfaz> net <rango_de_red>
-  ```
+
 - Mostrar IPs y puertos en formato numérico:
-  ```sh
+
   tcpdump -n
-  ```
+
 
 ### 9. Filtrar por puerto / tipo de puerto / rango de puertos
 - Filtrar por puerto específico:
-  ```sh
+
   tcpdump -i <interfaz> port <puerto>
-  ```
+
 - Filtrar por puerto de origen:
-  ```sh
+
   tcpdump -i <interfaz> src port <puerto>
-  ```
+
 - Filtrar por puerto de destino:
-  ```sh
+
   tcpdump -i <interfaz> dst port <puerto>
-  ```
+
 - Filtrar por rango de puertos:
-  ```sh
+
   tcpdump -i <interfaz> portrange <puerto_inicio>-<puerto_fin>
-  ```
+
 
 ### 10. Capturar paquetes con destino a una IP y puerto específico
-```sh
+
 tcpdump -i <interfaz> dst host <IP> and port <puerto>
-```
+
 Ejemplo para capturar tráfico con destino `192.168.1.1` en el puerto `23`:
-```sh
+
 tcpdump -i eth0 dst host 192.168.1.1 and port 23
-```
+
 
 ### 11. Capturar paquetes con IP destino específica y puerto 80 o 443
-```sh
-tcpdump -i <interfaz> dst host <IP> and (port 80 or port 443)
-```
-Ejemplo:
-```sh
-tcpdump -i eth0 dst host 192.168.1.1 and (port 80 or port 443)
-```
 
-### 12. Capturar tráfico filtrando por tamaño del paquete
-```sh
-tcpdump -i <interfaz> greater <tamaño_bytes>
-```
+tcpdump -i <interfaz> dst host <IP> and (port 80 or port 443)
+
+Ejemplo:
+
+tcpdump -i eth0 dst host 192.168.1.1 and (port 80 or port 443)
+
+
+12. Capturar tráfico filtrando por tamaño del paquete
+
+    tcpdump -i <interfaz> greater <tamaño_bytes>
+
 Ejemplo para capturar paquetes mayores a 1000 bytes:
-```sh
-tcpdump -i eth0 greater 1000
-```
+
+    tcpdump -i eth0 greater 1000
+
 Para paquetes menores a un tamaño específico:
-```sh
-tcpdump -i <interfaz> less <tamaño_bytes>
-```
+
+    tcpdump -i <interfaz> less <tamaño_bytes>
+
 
 ### Salir
 Para detener la captura, usa `Ctrl + C`.
