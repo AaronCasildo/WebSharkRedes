@@ -14,6 +14,7 @@ def menu():
     print('4 - Capturar paquetes específicos (TCP, UDP, ICMP, etc.)')
     print('5 - Capturar paquetes y desplegarlos en ascii')
     print('6 - Capturar paquetes con fecha y hora')
+    print('7 - Guardar la captura en un archivo `.pcap` y mostrar el número de paquetes capturados')
     print('\n00 - Salir')
 
 def main():
@@ -47,9 +48,9 @@ def process3():
     input('\nPresione Enter para regresar al menú principal...')
 
 def process4():
-    interface = input('Ingrese el nombre de la interfaz: ')
+    interface = input('Ingrese el nombre de la interfaz (normalmente se llama enp0s3): ')
     protocol = input('Ingrese el protocolo a capturar (TCP, UDP, ICMP, etc.): ')
-    subprocess.run(["tcpdump", "-i", interface, protocol])  # Corrección en el comando
+    subprocess.run(["tcpdump", "-c 100","-i", interface, protocol])  # Corrección en el comando
     input('\nPresione Enter para regresar al menú principal...')
 
 def process5():
@@ -59,6 +60,13 @@ def process5():
 def procces6():
     subprocess.run(["tcpdump", "-c 100", "-tttt"])
     input('\nPresione Enter para regresar al menú principal...')    
+
+def procces7(): #pendiente de ser completado
+    subprocess.run(["tcpdump", "-c 100", "-w", "captura.pcap"])
+    print('Número de paquetes capturados:')  # Se agrega mensaje
+    subprocess.run(["tcpdump", "-r", "captura.pcap", "-c", "100"])
+    subprocess.run(['tcpdump -r <archivo.pcap> | wc -l'])
+    input('\nPresione Enter para regresar al menú principal...')
 
 def exit_program():
     print('Saliendo...')
@@ -70,6 +78,8 @@ funciones = {
     3: process3,
     4: process4,
     5: process5,
+    6: procces6,
+    7: procces7,	
     00: exit_program
 }
 
