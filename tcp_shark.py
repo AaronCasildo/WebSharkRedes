@@ -12,30 +12,23 @@ def menu():
     print('2 - Capturar un número específico de paquetes y guardarlos en un archivo')
     print('3 - Seleccionar una interfaz específica para capturar paquetes')
     print('4 - Capturar paquetes específicos (TCP, UDP, ICMP, etc.)')
-    print('5 - Capturar paquetes y desplegarlos en ascii')
-    print('6 - Capturar paquetes con fecha y hora')
-    print('7 - Guardar la captura en un archivo `.pcap` y mostrar el número de paquetes capturados')
+    print('5 - Mostrar solo paquetes en ASCII')
+    print('6 - Capturar con fecha y hora')
+    print('7 - Guardar la captura en un archivo .pcap y mostrar el número de paquetes capturados')
+    print('8 - Filtrar por dirección IP o rango de red (mostrando IP y puerto)')
+    print('9 - Filtrar por puerto / tipo de puerto / rango de puertos')
+    print('10 - Capturar paquetes con destino a una IP y puerto específico')
+    print('11 - Capturar paquetes con IP destino específica y puerto 80 o 443')
+    print('12 - Capturar tráfico filtrando por tamaño del paquete')
     print('\n00 - Salir')
 
-def main():
-    while True:
-        menu()  # Mostrar menú en cada iteración
-        try:
-            x = int(input('Ingrese una opción: '))  # Solicitar opción del usuario
-            if x in funciones:
-                funciones[x]()
-            else:
-                print('Opción no válida. Intente de nuevo.')
-                input('Presione Enter para continuar...')
-        except ValueError:
-            print('Error: Ingrese un número válido.')
-            input('Presione Enter para continuar...')
+    return int(input('Ingrese una opción: '))  # Se solicita ingresar una opción.
 
-def process1(): 
+def process1():
     subprocess.run(["clear"])
-    subprocess.run(["tcpdump", "-D"])  # Corregido "tpcdump" a "tcpdump"
+    subprocess.run(["tcpdump", "-D"])
     input('\nPresione Enter para regresar al menú principal...')
-
+    
 def process2():
     packets = input('Ingrese el número de paquetes a capturar: ')
     file = input('Ingrese el nombre del archivo (Sin extensión): ')
@@ -48,24 +41,48 @@ def process3():
     input('\nPresione Enter para regresar al menú principal...')
 
 def process4():
-    interface = input('Ingrese el nombre de la interfaz (normalmente se llama enp0s3): ')
-    protocol = input('Ingrese el protocolo a capturar (TCP, UDP, ICMP, etc.): ')
-    subprocess.run(["tcpdump", "-c 100","-i", interface, protocol])  # Corrección en el comando
+    interface = input('Ingrese el nombre de la interfaz: ')
+    protocol = input('Ingrese el protocolo a capturar (tcp, udp, icmp, etc.): ')
+    subprocess.run(["tcpdump", "-i", interface, protocol])
     input('\nPresione Enter para regresar al menú principal...')
 
 def process5():
-    subprocess.run(["tcpdump", "-c 100", "-A"])
+    subprocess.run(["tcpdump", "-A"])
     input('\nPresione Enter para regresar al menú principal...')
 
-def procces6():
-    subprocess.run(["tcpdump", "-c 100", "-tttt"])
-    input('\nPresione Enter para regresar al menú principal...')    
+def process6():
+    subprocess.run(["tcpdump", "-tttt"])
+    input('\nPresione Enter para regresar al menú principal...')
 
-def procces7(): #pendiente de ser completado
-    subprocess.run(["tcpdump", "-c 100", "-w", "captura.pcap"])
-    print('Número de paquetes capturados:')  # Se agrega mensaje
-    subprocess.run(["tcpdump", "-r", "captura.pcap", "-c", "100"])
-    subprocess.run(['tcpdump -r <archivo.pcap> | wc -l'])
+def process7():
+    file = input('Ingrese el nombre del archivo para guardar la captura: ')
+    subprocess.run(["tcpdump", "-w", file + ".pcap"])
+    input('\nPresione Enter para regresar al menú principal...')
+
+def process8():
+    ip = input('Ingrese la dirección IP o el rango de red: ')
+    subprocess.run(["tcpdump", "host", ip])
+    input('\nPresione Enter para regresar al menú principal...')
+
+def process9():
+    port = input('Ingrese el puerto o rango de puertos: ')
+    subprocess.run(["tcpdump", "port", port])
+    input('\nPresione Enter para regresar al menú principal...')
+
+def process10():
+    ip = input('Ingrese la IP de destino: ')
+    port = input('Ingrese el puerto de destino: ')
+    subprocess.run(["tcpdump", "dst", ip, "and", "port", port])
+    input('\nPresione Enter para regresar al menú principal...')
+
+def process11():
+    ip = input('Ingrese la IP destino: ')
+    subprocess.run(["tcpdump", "dst", ip, "and", "(port 80 or port 443)"])
+    input('\nPresione Enter para regresar al menú principal...')
+
+def process12():
+    size = input('Ingrese el tamaño del paquete en bytes: ')
+    subprocess.run(["tcpdump", "greater", size])
     input('\nPresione Enter para regresar al menú principal...')
 
 def exit_program():
@@ -78,11 +95,25 @@ funciones = {
     3: process3,
     4: process4,
     5: process5,
-    6: procces6,
-    7: procces7,	
+    6: process6,
+    7: process7,
+    8: process8,
+    9: process9,
+    10: process10,
+    11: process11,
+    12: process12,
     00: exit_program
 }
 
-if __name__ == "__main__":
+def main():
     bienvenida()
+    while True:
+        x = menu()
+        if x in funciones:
+            funciones[x]()
+        else:
+            print('Opción no válida. Intente de nuevo.')
+            input('\nPresione Enter para continuar...')
+
+if __name__ == "__main__":
     main()
