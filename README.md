@@ -55,13 +55,13 @@ sudo dnf install tcpdump
 
 1. **Clona el repositorio**:
    ```bash
-   git clone https://github.com/AaronCasildo/tcpdump-tool.git
-   cd tcpdump-tool
+   git clone https://github.com/AaronCasildo/WebSharkRedes.git
+   cd WebSharkRedes
    ```
 
 2. **Ejecuta la herramienta**:
    ```bash
-   python3 tcpdump_menu.py
+   python3 tcp_shark.py
    ```
 
 3. **Selecciona una opción** del menú interactivo
