@@ -128,5 +128,3 @@ Para paquetes menores a un tamaño específico:
 
 ### Salir
 Para detener la captura, usa `Ctrl + C`.
-
-Si necesitas más detalles sobre alguna opción, dime. 🚀
