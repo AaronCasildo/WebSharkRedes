@@ -28,7 +28,7 @@ def process1():
 	subprocess.run(["clear"])
 	subprocess.run(["tcpdump", "-D"])
 	input('\nPresione Enter para regresar al menú principal...')
-    
+
 def process2():
 	packets = input('Ingrese el número de paquetes a capturar: ')
 	file = input('Ingrese el nombre del archivo (Sin extensión): ')
@@ -72,12 +72,12 @@ def process9():
 def process10():
 	ip = input('Ingrese la IP de destino: ')
 	port = input('Ingrese el puerto de destino: ')
-	subprocess.run(["sudo", "tcpdump", "dst", ip, "and", "port", port])
+	subprocess.run(["sudo", "tcpdump", "dst", "host", ip, "and", "port", port])
 	input('\nPresione Enter para regresar al menú principal...')
 
 def process11():
 	ip = input('Ingrese la IP destino: ')
-	subprocess.run(["sudo", "tcpdump", "dst", ip, "and", "(port 80 or port 443)"])
+	subprocess.run(["sudo", "tcpdump", "dst", "host", ip, "and", "(", "port", "80", "or", "port", "443", ")"])
 	input('\nPresione Enter para regresar al menú principal...')
 
 def process12():
