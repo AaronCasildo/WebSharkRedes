@@ -9,7 +9,7 @@ Una herramienta interactiva en Python para análisis y captura de tráfico de re
 - **Múltiples métodos de captura** - TCP, UDP, ICMP y más protocolos
 - **Filtrado avanzado** - Por IP, puerto, tamaño de paquete y rangos de red
 - **Exportación a PCAP** - Guarda capturas para análisis posterior con Wireshark
-- **Análisis en tiempo real** - Monitoreo live del tráfico de red
+- **Análisis en tiempo real** - Monitoreo en tiempo real del tráfico de red
 - **Filtros especializados** - Para tráfico web (puertos 80/443) y más
 
 ## Funcionalidades Principales
@@ -89,7 +89,7 @@ sudo dnf install tcpdump
 
 ## Guía de Comandos tcpdump
 
-El repositorio incluye una **guía completa** con todos los comandos tcpdump más utilizados:
+Este repositorio incluye una [guía ](tcpdump_cheatsheet.md) con todos los comandos tcpdump más utilizados:
 
 - Filtrado por protocolos
 - Captura por interfaces
@@ -111,9 +111,9 @@ El repositorio incluye una **guía completa** con todos los comandos tcpdump má
 - Monitoreo de intrusiones
 
 ### Desarrollo y Testing
-- Debug de aplicaciones de red
+- Depuración de aplicaciones de red
 - Análisis de APIs REST
-- Testing de conectividad
+- Pruebas de conectividad
 
 ## Consideraciones de Seguridad
 
