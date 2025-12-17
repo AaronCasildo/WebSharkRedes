@@ -3,7 +3,7 @@
 
 Una herramienta interactiva en Python para análisis y captura de tráfico de red usando `tcpdump`. Perfecta para administradores de sistemas, profesionales de seguridad y estudiantes de redes.
 
-## 🚀 Características
+## Características
 
 - **Interfaz de menú intuitiva** - Navegación fácil con opciones numeradas
 - **Múltiples métodos de captura** - TCP, UDP, ICMP y más protocolos
@@ -29,7 +29,7 @@ Una herramienta interactiva en Python para análisis y captura de tráfico de re
 | **11** | Tráfico web (puertos 80/443) |
 | **12** | Filtrar por tamaño de paquete |
 
-## 📋 Requisitos Previos
+## Requisitos Previos
 <img width="1024" height="576" alt="image" src="https://github.com/user-attachments/assets/23ffb807-1f3a-4fd1-9fd1-66a39bd0dcb0" />
 
 - **Sistema Operativo**: Linux/Unix (Ubuntu, Debian, CentOS, etc.)
@@ -51,7 +51,7 @@ sudo yum install tcpdump
 sudo dnf install tcpdump
 ```
 
-## 🔧 Instalación y Uso
+## Instalación y Uso
 
 1. **Clona el repositorio**:
    ```bash
@@ -66,7 +66,7 @@ sudo dnf install tcpdump
 
 3. **Selecciona una opción** del menú interactivo
 
-## 💡 Ejemplos de Uso
+## Ejemplos de Uso
 
 ### Capturar tráfico HTTP/HTTPS
 ```bash
@@ -87,7 +87,7 @@ sudo dnf install tcpdump
 # Resultado: mi_captura.pcap
 ```
 
-## 📖 Guía de Comandos tcpdump
+## Guía de Comandos tcpdump
 
 El repositorio incluye una **guía completa** con todos los comandos tcpdump más utilizados:
 
@@ -97,7 +97,7 @@ El repositorio incluye una **guía completa** con todos los comandos tcpdump má
 - Opciones de formato y salida
 - Ejemplos prácticos
 
-## 🛡️ Casos de Uso
+## Casos de Uso
 <img width="1854" height="639" alt="image" src="https://github.com/user-attachments/assets/e638cfd7-92fb-4b66-967c-e4b21cee2923" />
 
 ### Administración de Sistemas
@@ -115,7 +115,7 @@ El repositorio incluye una **guía completa** con todos los comandos tcpdump má
 - Análisis de APIs REST
 - Testing de conectividad
 
-## ⚠️ Consideraciones de Seguridad
+## Consideraciones de Seguridad
 
 - **Permisos**: Requiere privilegios de administrador (sudo)
 - **Privacidad**: Respeta las políticas de privacidad de tu organización
@@ -123,5 +123,3 @@ El repositorio incluye una **guía completa** con todos los comandos tcpdump má
 - **Datos**: Los archivos .pcap pueden contener información sensible
 
 ---
-
-**⭐ Si te parece útil esta herramienta, ¡no olvides darle una estrella al repositorio!**
